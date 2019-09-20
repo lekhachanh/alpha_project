@@ -1,4 +1,4 @@
-package alpha.configuration;
+package alpha.controller;
 
 public class UserController {
 }
