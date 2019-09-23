@@ -51,22 +51,18 @@ public class UserAPIController {
     //-------------------Create a User--------------------------------------------------------
 
     @RequestMapping(value = "/usersAPI/", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(@RequestBody UserForm userForm, UriComponentsBuilder ucBuilder) {
-        if (userFormService.isPass(userForm)) {
-            User user = new User(userForm.getEmail(), userForm.getPassword());
-            System.out.println("Creating User " + user.getEmail());
-            userAPIService.save(user);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(ucBuilder.path("/usersAPI/{id}").buildAndExpand(user.getId()).toUri());
-            return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-        }
-        return null;
+    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating User " + user.getEmail());
+        userAPIService.save(user);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/usersAPI/{id}").buildAndExpand(user.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
     //------------------- Update a User --------------------------------------------------------
 
     @RequestMapping(value = "/usersAPI/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody UserForm userForm) {
+    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         System.out.println("Updating User " + id);
 
         User currentUser = userAPIService.findById(id);
@@ -76,11 +72,9 @@ public class UserAPIController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
 
-        if (userFormService.isPass(userForm)) {
-            currentUser.setEmail(userForm.getEmail());
-            currentUser.setPassword(userForm.getPassword());
-            currentUser.setId(userForm.getId());
-        }
+        currentUser.setEmail(user.getEmail());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setId(user.getId());
 
         userAPIService.save(currentUser);
         return new ResponseEntity<User>(currentUser, HttpStatus.OK);
