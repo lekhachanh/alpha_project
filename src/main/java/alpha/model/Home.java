@@ -8,12 +8,12 @@ public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nameOfHome;
+    private String name;
     private String kindOfHome;
     private String kindOfRoom;
     private String address;
-    private int numberOfBedRoom;
-    private int numberOfBathRoom;
+    private int bedroom;
+    private int bathRoom;
     private String description;
     private double price;
 
@@ -21,13 +21,13 @@ public class Home {
     public Home() {
     }
 
-    public Home(String nameOfHome, String kindOfHome, String kindOfRoom, String address, int numberOfBedRoom, int numberOfBathRoom, String description, double price) {
-        this.nameOfHome = nameOfHome;
+    public Home(String name, String kindOfHome, String kindOfRoom, String address, int bedroom, int bathRoom, String description, double price) {
+        this.name = name;
         this.kindOfHome = kindOfHome;
         this.kindOfRoom = kindOfRoom;
         this.address = address;
-        this.numberOfBedRoom = numberOfBedRoom;
-        this.numberOfBathRoom = numberOfBathRoom;
+        this.bedroom = bedroom;
+        this.bathRoom = bathRoom;
         this.description = description;
         this.price = price;
     }
@@ -40,12 +40,12 @@ public class Home {
         this.id = id;
     }
 
-    public String getNameOfHome() {
-        return nameOfHome;
+    public String getName() {
+        return name;
     }
 
-    public void setNameOfHome(String nameOfHome) {
-        this.nameOfHome = nameOfHome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getKindOfHome() {
@@ -73,19 +73,19 @@ public class Home {
     }
 
     public int getNumberOfBedRoom() {
-        return numberOfBedRoom;
+        return bedroom;
     }
 
-    public void setNumberOfBedRoom(int numberOfBedRoom) {
-        this.numberOfBedRoom = numberOfBedRoom;
+    public void setNumberOfBedRoom(int bedroom) {
+        this.bedroom = bedroom;
     }
 
-    public int getNumberOfBathRoom() {
-        return numberOfBathRoom;
+    public int getBathRoom() {
+        return bathRoom;
     }
 
-    public void setNumberOfBathRoom(int numberOfBathRoom) {
-        this.numberOfBathRoom = numberOfBathRoom;
+    public void setBathRoom(int bathRoom) {
+        this.bathRoom = bathRoom;
     }
 
     public String getDescription() {

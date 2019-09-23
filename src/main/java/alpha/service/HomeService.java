@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 
 public interface HomeService {
-    Page<Home> findAll(Pageable pageable);
+    Iterable<Home> findAll( );
 
     Home findById(Long id);
 

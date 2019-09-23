@@ -14,8 +14,8 @@ public class HomeServiceImpl implements HomeService {
     private HomeRepository homeRepository;
 
     @Override
-    public Page<Home> findAll(Pageable pageable) {
-        return homeRepository.findAll(pageable);
+    public Iterable<Home> findAll( ) {
+        return homeRepository.findAll();
     }
 
     @Override
