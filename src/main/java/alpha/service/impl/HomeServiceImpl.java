@@ -4,8 +4,6 @@ import alpha.model.Home;
 import alpha.repository.HomeRepository;
 import alpha.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 
 public class HomeServiceImpl implements HomeService {
