@@ -1,6 +1,8 @@
 package alpha.configuration;
 
 
+import alpha.service.HomeService;
+import alpha.service.impl.HomeServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -56,10 +58,10 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     }
 
 
-//    @Bean
-//    public NoteTypeService noteTypeService() {
-//        return new NoteTypeServiceImpl();
-//    }
+    @Bean
+    public HomeService homeService() {
+        return new HomeServiceImpl();
+    }
 //
 //    @Bean
 //    public NoteService noteService() {
