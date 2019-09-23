@@ -1,7 +1,6 @@
 package alpha.controller;
 
 import alpha.model.User;
-import alpha.model.UserForm;
 import alpha.service.UserAPIService;
 import alpha.service.UserFormService;
 import org.springframework.beans.factory.annotation.Autowired;
