@@ -15,6 +15,7 @@ public class Home {
     private int bathRoom;
     private String description;
     private double price;
+
     @OneToMany(targetEntity = Image.class,cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     private List<Image> images;
 
@@ -22,7 +23,7 @@ public class Home {
     public Home() {
     }
 
-    public Home(String name, String address, int bedroom, int bathRoom, String description, double price) {
+    public Home(String name, String address, int bedroom, int bathRoom, String description, double price, List<Image> images) {
         this.name = name;
         this.address = address;
         this.bedroom = bedroom;

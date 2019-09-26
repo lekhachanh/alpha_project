@@ -1,5 +1,7 @@
 package alpha.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,8 +11,10 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String imageUrl;
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "house_id", referencedColumnName = "id")
+    @JoinColumn(name = "home_id", referencedColumnName = "id")
     private Home home;
 
     public Image() {

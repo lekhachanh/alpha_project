@@ -2,6 +2,7 @@ package alpha.configuration;
 
 
 //import alpha.formatter.ImageFormatter;
+import alpha.formatter.ImageFormatter;
 import alpha.service.HomeService;
 //import alpha.service.ImageService;
 import alpha.service.impl.HomeServiceImpl;
@@ -171,10 +172,9 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        ImageFormatter imageFormatter = new ImageFormatter();
-//        registry.addFormatter(imageFormatter);
-//    }
-
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        ImageFormatter imageFormatter = new ImageFormatter();
+        registry.addFormatter(imageFormatter);
+    }
 }
