@@ -1,9 +1,6 @@
 package alpha.service;
 
 import alpha.model.Home;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 
 public interface HomeService {
     Iterable<Home> findAll( );

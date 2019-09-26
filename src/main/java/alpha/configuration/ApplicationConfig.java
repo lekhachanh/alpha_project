@@ -1,8 +1,11 @@
 package alpha.configuration;
 
 
+//import alpha.formatter.ImageFormatter;
 import alpha.service.HomeService;
+//import alpha.service.ImageService;
 import alpha.service.impl.HomeServiceImpl;
+//import alpha.service.impl.ImageServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -62,39 +66,39 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public HomeService homeService() {
         return new HomeServiceImpl();
     }
-//
+
 //    @Bean
-//    public NoteService noteService() {
-//        return new NoteServiceImpl();
+//    public ImageService imageService() {
+//        return new ImageServiceImpl();
 //    }
 
 
-    //cau hinh thymeleaf
-    @Bean
-    public SpringResourceTemplateResolver templateResolver() {
-        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views");
-        templateResolver.setSuffix(".html");
-        templateResolver.setCharacterEncoding("UTF-8");
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        return templateResolver;
-    }
 
-    @Bean
-    public TemplateEngine templateEngine() {
-        TemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver());
-        return templateEngine;
-    }
+//    @Bean
+//    public SpringResourceTemplateResolver templateResolver() {
+//        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+//        templateResolver.setApplicationContext(applicationContext);
+//        templateResolver.setPrefix("/WEB-INF/views");
+//        templateResolver.setSuffix(".html");
+//        templateResolver.setCharacterEncoding("UTF-8");
+//        templateResolver.setTemplateMode(TemplateMode.HTML);
+//        return templateResolver;
+//    }
 
-    @Bean
-    public ThymeleafViewResolver viewResolver() {
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setCharacterEncoding("UTF-8");
-        return viewResolver;
-    }
+//    @Bean
+//    public TemplateEngine templateEngine() {
+//        TemplateEngine templateEngine = new SpringTemplateEngine();
+//        templateEngine.setTemplateResolver(templateResolver());
+//        return templateEngine;
+//    }
+
+//    @Bean
+//    public ThymeleafViewResolver viewResolver() {
+//        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+//        viewResolver.setTemplateEngine(templateEngine());
+//        viewResolver.setCharacterEncoding("UTF-8");
+//        return viewResolver;
+//    }
 
 
     //cau hinh entity
@@ -166,4 +170,11 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
+
+//    @Override
+//    public void addFormatters(FormatterRegistry registry) {
+//        ImageFormatter imageFormatter = new ImageFormatter();
+//        registry.addFormatter(imageFormatter);
+//    }
+
 }

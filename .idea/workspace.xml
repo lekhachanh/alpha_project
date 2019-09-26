@@ -32,6 +32,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -163,6 +164,9 @@
       <workItem from="1568973746882" duration="827000" />
       <workItem from="1569202523847" duration="7562000" />
       <workItem from="1569211267532" duration="1365000" />
+      <workItem from="1569225670962" duration="4460000" />
+      <workItem from="1569230429462" duration="3808000" />
+      <workItem from="1569462406415" duration="655000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,10 @@
 package alpha.controller;
 
 import alpha.model.Home;
+import alpha.model.Image;
 import alpha.service.HomeService;
+//import alpha.service.ImageService;
+import alpha.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,13 +39,13 @@ class RestHomeController {
         return new ResponseEntity<Home>(home, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/homes", method = RequestMethod.POST)
+    @RequestMapping(value = "/homes", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ResponseEntity<Void> createHome(@RequestBody Home home) {
         homeService.save(home);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/homes/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/homes/{id}", method = RequestMethod.PUT, consumes = "multipart/form-data")
     public ResponseEntity<Home> updateHome(@PathVariable("id") Long id, @RequestBody Home home) {
         Home currentHome = homeService.findById(id);
 
@@ -51,14 +54,12 @@ class RestHomeController {
         }
         currentHome.setId(home.getId());
         currentHome.setName(home.getName());
-        currentHome.setKindOfHome(home.getKindOfHome());
-        currentHome.setKindOfRoom(home.getKindOfRoom());
         currentHome.setAddress(home.getAddress());
-        currentHome.setNumberOfBedRoom(home.getNumberOfBedRoom());
+        currentHome.setBedroom(home.getBedroom());
         currentHome.setBathRoom(home.getBathRoom());
         currentHome.setDescription(home.getDescription());
         currentHome.setPrice(home.getPrice());
-
+        currentHome.setImages(home.getImages());
 
         homeService.save(currentHome);
         return new ResponseEntity<Home>(currentHome, HttpStatus.OK);

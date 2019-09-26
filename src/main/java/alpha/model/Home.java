@@ -1,6 +1,7 @@
 package alpha.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "home")
@@ -9,27 +10,26 @@ public class Home {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String kindOfHome;
-    private String kindOfRoom;
     private String address;
     private int bedroom;
     private int bathRoom;
     private String description;
     private double price;
+    @OneToMany(targetEntity = Image.class,cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    private List<Image> images;
 
 
     public Home() {
     }
 
-    public Home(String name, String kindOfHome, String kindOfRoom, String address, int bedroom, int bathRoom, String description, double price) {
+    public Home(String name, String address, int bedroom, int bathRoom, String description, double price) {
         this.name = name;
-        this.kindOfHome = kindOfHome;
-        this.kindOfRoom = kindOfRoom;
         this.address = address;
         this.bedroom = bedroom;
         this.bathRoom = bathRoom;
         this.description = description;
         this.price = price;
+        this.images = images;
     }
 
     public Long getId() {
@@ -48,22 +48,6 @@ public class Home {
         this.name = name;
     }
 
-    public String getKindOfHome() {
-        return kindOfHome;
-    }
-
-    public void setKindOfHome(String kindOfHome) {
-        this.kindOfHome = kindOfHome;
-    }
-
-    public String getKindOfRoom() {
-        return kindOfRoom;
-    }
-
-    public void setKindOfRoom(String kindOfRoom) {
-        this.kindOfRoom = kindOfRoom;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -72,11 +56,11 @@ public class Home {
         this.address = address;
     }
 
-    public int getNumberOfBedRoom() {
+    public int getBedroom() {
         return bedroom;
     }
 
-    public void setNumberOfBedRoom(int bedroom) {
+    public void setBedroom(int bedroom) {
         this.bedroom = bedroom;
     }
 
@@ -102,5 +86,13 @@ public class Home {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
